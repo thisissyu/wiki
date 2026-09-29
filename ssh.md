@@ -30,8 +30,7 @@ function s53 {
 ```
 
 ```powershell
-# NOTE: The double quotes.
-ssh-copy-id "username@localhost -p 22"
+ssh-copy-id -i $HOME\.ssh\id_rsa.pub -p 22 username@ip.address
 ```
 
 ## Change ssh port
