@@ -24,6 +24,7 @@ supports_websockets = true
 // `~/.codex/auth.json`
 
 {
+  "auth_mode": "apikey",
   "OPENAI_API_KEY": "sk-your-api-key"
 }
 ```
