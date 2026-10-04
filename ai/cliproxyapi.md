@@ -149,20 +149,14 @@ disable-cooling: true
 
     <p><img src=".assets/cliproxyapi/img/2026-04-14-11-29-57.png" alt="" width=100% style="display: block; margin: auto;"></p>
 
-  - For codex:
+  - For codex: Refer to [./codex.md](./codex.md)
 
     ```toml
     # ~/.codex/config.toml
 
-    model_provider = "newapi"
-    model = "gpt-5.4"
-    model_reasoning_effort = "xhigh"
-    approval_policy = "never"
-    sandbox_mode = "danger-full-access"
+    model_provider = "custom"
 
     [model_providers.newapi]
-    name = "NewAPI"
+    name = "custom"
     base_url = "http://127.0.0.1:8317/v1"
-    wire_api = "responses"
-    requires_openai_auth = true
     ```
