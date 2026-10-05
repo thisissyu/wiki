@@ -25,7 +25,7 @@
 1. Add multi git remotes:
 
    ```bash
-   tmp=$(git remote -v | grep origin | head -n1 | awk '{print $2}'); tmp="${tmp##*/}"; tmp="${tmp%.git}"; git remote add gitee git@gitee.com:ysl2/"$tmp".git; git remote -v
+   tmp=$(git remote -v | grep origin | head -n1 | awk '{print $2}'); tmp="${tmp##*/}"; tmp="${tmp%.git}"; git remote add gitee git@gitee.com:thisissyu/"$tmp".git; git remote -v
    ```
 
 1. Push to all remotes:
