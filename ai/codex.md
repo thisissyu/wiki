@@ -103,3 +103,25 @@ fast_default_opt_out = true
 [shell_environment_policy.set]
 NO_PROXY = "localhost,127.0.0.1,::1"
 ```
+
+### Hooks
+
+```toml
+# `~/.codex/config.toml`
+# NOTE: You need to set your own ntfy topic in `{your-topic-here}`.
+
+[[hooks.PreToolUse]]
+matcher = "^request_user_input$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = '''sh -c 'curl -fsS -o /dev/null -d "Codex is asking." "https://ntfy.sh/{your-topic-here}" && printf "{}"' '''
+timeout = 10
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = '''sh -c 'curl -fsS -o /dev/null -d "Codex is idle." "https://ntfy.sh/{your-topic-here}" && printf "{}"' '''
+timeout = 10
+```
