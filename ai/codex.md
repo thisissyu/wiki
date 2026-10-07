@@ -58,7 +58,10 @@ model_auto_compact_token_limit = 945000
 
 ### Use latest model or custom model
 
-> Ref: <https://linux.do/t/topic/2042554>
+> Ref:
+>
+> - <https://linux.do/t/topic/2042554>
+> - <https://linux.do/t/topic/2876897/4>
 
 ```toml
 # `~/.codex/config.toml`
@@ -66,11 +69,21 @@ model_auto_compact_token_limit = 945000
 model_catalog_json = "./models_cache.json"
 ```
 
-Run `codex login` and `/model` to generate `~/.codex/models_cache.json` if you haven't done it before.
+```bash
+codex debug models --bundled | jq --indent 2 '.' > ~/.codex/models_cache.json
+```
+
+<!-- Run `codex login` and `/model` to generate `~/.codex/models_cache.json` if you haven't done it before. -->
 
 Then, modify `~/.codex/models_cache.json` to copy an old model, paste, and modify it to newest model.
 
 e.g, copy `gpt-5.4`, and modify the model name to `gpt-5.5` or `claude-opus-4-7`.
+
+Then, restart codex app-server to refresh model list:
+
+```bash
+codex app-server daemon restart
+```
 
 ### Add git commit co-author
 
