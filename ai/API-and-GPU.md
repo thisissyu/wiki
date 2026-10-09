@@ -152,18 +152,21 @@
 | <https://tianchi.aliyun.com/notebook-ai/> |
 | <https://aistudio.baidu.com>              |
 
-| URL                         | Name       | RTX 4090 |
-| --------------------------- | ---------- | -------- |
-| <https://gpu.ai-galaxy.cn>  | 智星云     | 1.32/h   |
-| <https://www.gpufree.cn>    | 算力自由   | 1.38/h   |
-| <https://www.gpushare.com>  | 恒源云     | 1.59/h   |
-| <https://compshare.cn/>     | 优云智算   | 1.66/h   |
-| <https://suanli.cn>         | 共绩算力   | 1.68/h   |
-| <https://featurize.cn/>     |            | 1.87/h   |
-| <https://www.sunclouds.com> | 尚云       | 2.00/h   |
-| <https://vast.ai>           |            | 2.03/h   |
-| <https://www.autodl.com/>   |            | 2.08/h   |
-| <https://matpool.com>       | 矩池云     | 2.20/h   |
-| <https://openbayes.com>     |            | 2.50/h   |
-| <https://www.scnet.cn>      | 超算互联网 | 3.60/h   |
-| <https://mistgpu.com>       |            | N/A      |
+| URL                            | Name       | RTX 3090 | RTX 4090 (sort up) | Note         |
+| ------------------------------ | ---------- | -------- | ------------------ | ------------ |
+| <https://www.gpufree.cn>       | 算力自由   | N/A      | 1.38/h             |              |
+| <https://www.gpuhome.cc>       | 智川云     | 0.99/h   | 1.38/h             |              |
+| <https://gpu.ai-galaxy.cn>     | 智星云     | 1.10/h   | 1.65/h             |              |
+| <https://www.gpushare.com>     | 恒源云     | 1.27/h   | 1.66/h             |              |
+| <https://xkey.cloud/Resources> | 希氪智算   | 1.29/h   | 1.89/h             |              |
+| <https://compshare.cn/>        | 优云智算   | 1.13/h   | 2.24/h             |              |
+| <https://featurize.cn/>        | Featurize  | 1.62/h   | 1.87/h             |              |
+| <https://www.sunclouds.com>    | 尚云       | N/A      | 2.00/h             |              |
+| <https://www.autodl.com/>      | AutoDL     | 1.58/h   | 1.88/h             |              |
+| <https://matpool.com>          | 矩池云     | 1.85/h   | 2.20/h             |              |
+| <https://openbayes.com>        | Openbayes  | N/A      | 2.50/h             |              |
+| <https://www.scnet.cn>         | 超算互联网 | N/A      | 3.60/h             |              |
+| <https://vast.ai>              | Vast AI    | N/A      | $0.40/h            | 海外租卡平台 |
+| <https://suanli.cn>            | 共绩算力   | N/A      | N/A                |              |
+
+<!-- | <https://mistgpu.com>          |            |          | N/A                |              | -->
