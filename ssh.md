@@ -2,7 +2,16 @@
 
 > Ref: `man sshd_config`
 
-## Mac installation
+## Installation
+
+### Linux installation
+
+```bash
+sudo apt install openssh-server
+sudo systemctl start ssh
+```
+
+### Mac installation
 
 ```bash
 brew install openssh
