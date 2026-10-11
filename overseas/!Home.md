@@ -95,3 +95,12 @@
 | ------------------------------ | ---------- |
 | <https://appstoreprice.org/zh> |            |
 | <https://store.kxsw.org/>      | 数卡杂货铺 |
+
+## VPS
+
+| URL                            | Note |
+| ------------------------------ | ---- |
+| <https://meowvps.com/blog/>    |      |
+| <https://digvps.com/inventory> |      |
+| <https://vpsdeer.com/plans>    |      |
+| <https://idcflare.com/>        |      |
