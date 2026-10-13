@@ -10,15 +10,50 @@ mv ~/.bash_login ~/.bash_login_
 sudo systemctl set-default multi-user.target
 ```
 
+## Installation
+
+1. Download debian offline installation ISO
+
+   - Official debian stable: <https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd>
+   - Official debian testing: <https://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-dvd/>
+   - Mirrored debian stable: <https://mirrors.tuna.tsinghua.edu.cn/debian-cd/current/amd64/iso-dvd/>
+
+2. Create USB bootloader
+
+   - On Linux, use `dd` command to flash USB
+
+     ```bash
+     sudo dd if=/path/to/debian.iso of=/dev/sdX bs=4M status=progress oflag=sync
+     ```
+
+   - On Windows, download USB flashing tool
+
+     ```powershell
+     choco install rufus
+     ```
+
+3. Install Debian
+
+   - EFI partition should be 1G size.
+
+## Configuration
+
+1. Set apt source
+
+   ```bash
+   vim /etc/apt/sources.list
+   ```
+
+   ```text
+   deb https://deb.debian.org/debian testing main contrib non-free non-free-firmware
+   ```
+
+## Legacy
+
 - 烧录器
   - <https://github.com/balena-io/etcher/releases/download/v1.18.13/balenaEtcher-1.18.13-x64.AppImage>
 - arch下载
   - <https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/>
-- debian下载（本地包）
-  - <https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd>
-  - <https://mirrors.tuna.tsinghua.edu.cn/debian-cd/current/amd64/iso-dvd/>
-- dd命令做安装盘
-  - sudo dd if=/path/to/debian.iso of=/dev/sdX bs=4M status=progress oflag=sync
 - 安装。注意分区efi，512M，否则没法开机
 - 搭建clash，需要clash执行文件和country.mmdb
 - firefox设置代理，设置里面搜proxy
