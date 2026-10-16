@@ -82,3 +82,9 @@ Add this:
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install telegram@claude-plugins-official
 ```
+
+## Generate one year token
+
+```bash
+claude setup-token
+```
