@@ -1,125 +1,117 @@
 # xrdp
 
+> NOTE: If you use GNOME, xrdp is not necessary. Just use `gnome-remote-desktop` in GNOME's "Setting" -> "System" -> "Remote Desktop"
+
 ## Setting Up a Lightweight Remote Browser on a Debian 12 VPS
 
 Deploy Openbox + XRDP + Firefox ESR on a Debian 12 VPS with 1GB RAM. Access it through Windows Remote Desktop and automatically launch Firefox with Claude.
 
 Environment: Debian 12, 1GB RAM, 10GB SSD, Windows.
 
-### 1. Connect via SSH
+1. Connect via SSH.
 
-Run in Windows PowerShell:
+   Run in Windows PowerShell:
 
-```powershell
-ssh -p <SSH_PORT> root@<VPS_IP>
-```
+   ```powershell
+   ssh -p <SSH_PORT> <VPS_USER>@<VPS_IP>
+   ```
 
-All following Linux commands are executed as root on the VPS.
+   All following Linux commands are executed as <VPS_USER> on the VPS.
 
-### 2. Configure 1GB Swap
+1. Install the Desktop and Browser.
 
-```bash
-fallocate -l 1G /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo '/swapfile none swap sw 0 0' >> /etc/fstab
-```
+   ```bash
+   sudo apt update
+   sudo apt install -y --no-install-recommends \
+   xrdp xorgxrdp openbox firefox-esr \
+   dbus-x11 fonts-dejavu-core
+   ```
 
-### 3. Install the Desktop and Browser
+1. Configure Openbox and Firefox.
 
-```bash
-apt update
-apt install -y --no-install-recommends \
-  xrdp xorgxrdp openbox firefox-esr \
-  dbus-x11 fonts-dejavu-core
-```
+   Create a desktop user:
 
-### 4. Configure Openbox and Firefox
+   ```bash
+   sudo adduser desktop
+   ```
 
-Create a desktop user:
+   Configure the graphical session:
 
-```bash
-adduser desktop
-```
+   ```bash
+   sudo tee /home/desktop/.xsession > /dev/null <<'EOF'
+   #!/bin/sh
+   exec dbus-launch --exit-with-session openbox-session
+   EOF
 
-Configure the graphical session:
+   sudo chmod +x /home/desktop/.xsession
+   sudo chown desktop:desktop /home/desktop/.xsession
+   ```
 
-```bash
-cat > /home/desktop/.xsession <<'EOF'
-#!/bin/sh
-exec dbus-launch --exit-with-session openbox-session
-EOF
+   Configure Firefox to automatically open Claude:
 
-chmod +x /home/desktop/.xsession
-chown desktop:desktop /home/desktop/.xsession
-```
+   ```bash
+   sudo mkdir -p /home/desktop/.config/openbox
 
-Configure Firefox to automatically open Claude:
+   sudo tee /home/desktop/.config/openbox/autostart > /dev/null <<'EOF'
+   /usr/bin/firefox-esr --new-window https://claude.ai \
+       > /home/desktop/firefox-autostart.log 2>&1 &
+   EOF
 
-```bash
-mkdir -p /home/desktop/.config/openbox
+   sudo chown -R desktop:desktop /home/desktop/.config
+   ```
 
-cat > /home/desktop/.config/openbox/autostart <<'EOF'
-/usr/bin/firefox-esr --new-window https://claude.ai \
-    > /home/desktop/firefox-autostart.log 2>&1 &
-EOF
+1. Configure XRDP.
 
-chown -R desktop:desktop /home/desktop/.config
-```
+   Bind XRDP to localhost on port `33389`:
 
-### 5. Configure XRDP
+   ```bash
+   sudo sed -i \
+   '0,/^port=3389$/s|^port=3389$|port=tcp://127.0.0.1:33389|' \
+   /etc/xrdp/xrdp.ini
 
-Bind XRDP to localhost on port `33389`:
+   sudo adduser xrdp ssl-cert
 
-```bash
-sed -i \
-'0,/^port=3389$/s|^port=3389$|port=tcp://127.0.0.1:33389|' \
-/etc/xrdp/xrdp.ini
+   sudo systemctl enable xrdp
+   sudo systemctl restart xrdp
+   ```
 
-adduser xrdp ssl-cert
+1. Establish an SSH Tunnel from Windows.
 
-systemctl enable xrdp
-systemctl restart xrdp
-```
+   Run in Windows PowerShell:
 
-### 6. Establish an SSH Tunnel from Windows
+   ```powershell
+   ssh -p <SSH_PORT> -N -L 127.0.0.1:33389:127.0.0.1:33389 <VPS_USER>@<VPS_IP>
+   ```
 
-Run in Windows PowerShell:
+   Keep the PowerShell window open.
 
-```powershell
-ssh -p <SSH_PORT> -N -L 127.0.0.1:33389:127.0.0.1:33389 root@<VPS_IP>
-```
+1. Connect via Remote Desktop.
 
-Keep the PowerShell window open.
+   Press `Win + R` and enter:
 
-### 7. Connect via Remote Desktop
+   ```text
+   mstsc
+   ```
 
-Press `Win + R` and enter:
+   Connect to:
 
-```text
-mstsc
-```
+   ```text
+   127.0.0.1:33389
+   ```
 
-Connect to:
+   Login credentials:
 
-```text
-127.0.0.1:33389
-```
+   - Session: `Xorg`
+   - Username: `desktop`
+   - Password: The password created for the desktop user
 
-Login credentials:
+   Recommended resolution: `1024 x 768`.
 
-- Session: `Xorg`
-- Username: `desktop`
-- Password: The password created for the desktop user
+   Result: Windows connects to the VPS through an SSH tunnel. Firefox launches automatically in the Openbox desktop, opens `https://claude.ai`, and accesses the internet through the VPS.
 
-Recommended resolution: `1024 x 768`.
+1. Reduce RDP Bandwidth.
 
-Result: Windows connects to the VPS through an SSH tunnel. Firefox launches automatically in the Openbox desktop, opens `https://claude.ai`, and accesses the internet through the VPS.
-
-### 8. Reduce RDP Bandwidth
-
-- Windows Remote Desktop (mstsc):
+   - Windows Remote Desktop (mstsc):
 
    - Resolution: 1024 x 768
    - Color depth: 16-bit
@@ -127,7 +119,7 @@ Result: Windows connects to the VPS through an SSH tunnel. Firefox launches auto
    - Disable showing window contents while dragging.
    - Enable persistent bitmap caching.
 
-- Firefox:
+   - Firefox:
 
    - Disable video autoplay.
    - Disable smooth scrolling.
