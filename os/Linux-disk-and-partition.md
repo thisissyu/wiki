@@ -1,4 +1,4 @@
-# [study-linux] Linux disk and partition
+# Linux disk and partition
 
 ## Format new disk and create single and full partition
 
@@ -32,4 +32,14 @@ UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/nas      ext4      defaults  0   
 
 sudo mount -a  # Test the fstab configuration (should not show errors).
 sudo reboot  # Reboot to verify automount works.
+```
+
+## Configure 1GB Swap
+
+```bash
+fallocate -l 1G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
 ```
