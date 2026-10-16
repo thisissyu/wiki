@@ -123,3 +123,4 @@
 | <https://ipmela.com/>            | US     |     |                                                                                                     |
 | <https://www.sufe.pro/>          | US     |     |                                                                                                     |
 | <https://usvps24.com/>           | US     |     |                                                                                                     |
+| <https://www.666clouds.com/>     | US     |     |                                                                                                     |
