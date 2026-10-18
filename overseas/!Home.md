@@ -107,20 +107,20 @@
 | <https://fuck-claude.app/>        |
 | <https://fuck-claude.vercel.app/> |
 
-### Residential IP / VPS
-
-| URL                              | Region | OK? | Note                                                                                                |
-| -------------------------------- | ------ | --- | --------------------------------------------------------------------------------------------------- |
-| <https://vpnuk.net>              | UK     | Y   | 家宽但ipinfo被标记, 英国UDP, 一个月9.9英镑                                                          |
-| <http://h.7li7li.com/>           | US     | Y   |                                                                                                     |
-| <https://yunyoo.cc/>             | US     | N   | 洛杉矶4837ISP-TCVM - Mini, XRDP网页Claude弹KYC                                                      |
-| <https://aethercloud.io>         | US     | N   | 提供ATT ipv6 (需要自行脚本安装), sing-box, 指纹浏览器接入 (出站ipv6 only), claude提示无法验证浏览器 |
-| <https://dashboard.webshare.io/> | US     | N   | 指纹浏览器接入, claude开通pro提示"Failed to load the payment form"                                  |
-| <https://equaldcdn.com/>         | US     |     |                                                                                                     |
-| <https://www.nodemach.com/>      | US     |     |                                                                                                     |
-| <https://my.zorocloud.com>       | US     |     |                                                                                                     |
-| <https://www.yin-net.com/>       | US     |     |                                                                                                     |
-| <https://ipmela.com/>            | US     |     |                                                                                                     |
-| <https://www.sufe.pro/>          | US     |     |                                                                                                     |
-| <https://usvps24.com/>           | US     |     |                                                                                                     |
-| <https://www.666clouds.com/>     | US     |     |                                                                                                     |
+| URL                              | Region | Residential? | Claude OK? | Note                                                                                                |
+| -------------------------------- | ------ | ------------ | ---------- | --------------------------------------------------------------------------------------------------- |
+| <http://h.7li7li.com/>           | US     | Y            | Y          |                                                                                                     |
+| <https://aethercloud.io>         | US     | Y            | N          | 提供ATT ipv6 (需要自行脚本安装), sing-box, 指纹浏览器接入 (出站ipv6 only), claude提示无法验证浏览器 |
+| <https://dashboard.webshare.io/> | US     | Y            | N          | 指纹浏览器接入, claude开通pro提示"Failed to load the payment form"                                  |
+| <https://vpnuk.net>              | UK     | Y            |            | 家宽但ipinfo被标记, 英国UDP, 一个月9.9英镑                                                          |
+| <https://yunyoo.cc/>             | US     | N            | N          | 洛杉矶4837ISP-TCVM - Mini, XRDP网页Claude弹KYC                                                      |
+| <https://vmiss.com>              | US     | N            |            |                                                                                                     |
+| <https://equaldcdn.com/>         | US     |              |            |                                                                                                     |
+| <https://www.nodemach.com/>      | US     |              |            |                                                                                                     |
+| <https://my.zorocloud.com>       | US     |              |            |                                                                                                     |
+| <https://www.yin-net.com/>       | US     |              |            |                                                                                                     |
+| <https://ipmela.com/>            | US     |              |            |                                                                                                     |
+| <https://www.sufe.pro/>          | US     |              |            |                                                                                                     |
+| <https://usvps24.com/>           | US     |              |            |                                                                                                     |
+| <https://www.666clouds.com/>     | US     |              |            |                                                                                                     |
+| <https://shlii.io/>              | US     |              |            |                                                                                                     |
