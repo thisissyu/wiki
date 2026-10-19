@@ -11,6 +11,76 @@ sudo systemctl enable --now clash-verge-service
 sudo systemctl status clash-verge-service
 ```
 
+### Global extend config and script
+
+1. Default path
+
+| System  | Global External Config                                                                        | Global External Script                                                                       |
+| ------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Linux   | `~/.local/share/io.github.clash-verge-rev.clash-verge-rev/profiles/Merge.yaml`                | `~/.local/share/io.github.clash-verge-rev.clash-verge-rev/profiles/Script.js`                |
+| macOS   | `~/Library/Application Support/io.github.clash-verge-rev.clash-verge-rev/profiles/Merge.yaml` | `~/Library/Application Support/io.github.clash-verge-rev.clash-verge-rev/profiles/Script.js` |
+| Windows | `%APPDATA%\io.github.clash-verge-rev.clash-verge-rev\profiles\Merge.yaml`                     | `%APPDATA%\io.github.clash-verge-rev.clash-verge-rev\profiles\Script.js`                     |
+
+1. Clash verge -> Profiles -> Global Extend Config -> Double click it
+
+   ```yaml
+   # Profile Enhancement Merge Template for Clash Verge
+
+   profile:
+     store-selected: true
+
+   dns:
+     # Prevent `/etc/hosts` wrong dns parser pollution.
+     use-system-hosts: false
+
+   tun:
+     # Fix SSH large-packet drops and stalled handshakes caused by Clash TUN's default MTU of 9000 in WSL2 mirrored mode
+     mtu: 1500
+   ```
+
+1. Clash verge -> Profiles -> Global Extend Script -> Double click it
+
+   ```javascript
+   // Define main function (script entry)
+
+   function main(config, profileName) {
+     const directRules = [
+       // Example: Set target IP direct (replace to real IPv4).
+       // - "IP-CIDR,1.2.3.4/32,DIRECT,no-resolve"
+
+       // Localhost
+       "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve",
+
+       // Local WIFI
+       "IP-CIDR,192.168.31.0/24,DIRECT,no-resolve",
+
+       // School inner net
+       "IP-CIDR,10.102.32.202/32,DIRECT,no-resolve",
+       "IP-CIDR,10.102.32.203/32,DIRECT,no-resolve",
+
+       // School public net
+       // "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve",
+
+       // Other public net
+       // "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve",
+     ];
+     config.rules = [...directRules, ...(config.rules || [])];
+
+     // Enable Mihomo built-in DNS
+     config.dns = config.dns || {};
+     config.dns.enable = true;
+     // respect-rules needs to config proxy-server-nameserver
+     if (!config.dns["proxy-server-nameserver"]) {
+       config.dns["proxy-server-nameserver"] = [
+         "https://doh.pub/dns-query"
+       ];
+     }
+     config.dns["respect-rules"] = true;
+
+     return config;
+   }
+   ```
+
 ### Set chain proxy
 
 Create a new profile (proxies are copied from your other profiles)
@@ -31,25 +101,6 @@ proxy-groups:
   - { name: MyGroup, type: select, proxies: ["US", "HK"] }
 
 rules:
-  # Example: Set target IP direct (replace to real IPv4).
-  # - "IP-CIDR,1.2.3.4/32,DIRECT,no-resolve"
-
-  # Localhost
-  - "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve"
-
-  # Local WIFI
-  - "IP-CIDR,192.168.31.0/24,DIRECT,no-resolve"
-
-  # School inner net
-  - "IP-CIDR,10.102.32.202/32,DIRECT,no-resolve"
-  - "IP-CIDR,10.102.32.203/32,DIRECT,no-resolve"
-
-  # School public net
-  # - "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve"
-
-  # Other public net
-  # - "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve"
-
   # Default internetional. Set others to go through this proxy.
   - "MATCH,MyGroup"
 ```
