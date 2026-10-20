@@ -60,3 +60,11 @@ ssh-keygen -R [10.0.224.7]:36000
 # Or:
 ssh-keygen -R 10.0.224.7 -p 36000
 ```
+
+## Temp set ssh tunnel
+
+```bash
+# NOTE: In your laptop, run:
+ssh -N -L 127.0.0.1:2095:127.0.0.1:2095 -L 127.0.0.1:2096:127.0.0.1:2096 <VPS_USER>@<VPS_IP>
+# NOTE: In your laptop browser, open: http://127.0.0.1:2095/app/
+```
