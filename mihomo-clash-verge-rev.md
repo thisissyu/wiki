@@ -66,14 +66,11 @@ sudo systemctl status clash-verge-service
      ];
      config.rules = [...directRules, ...(config.rules || [])];
 
-     // Enable Mihomo built-in DNS
+     // Enable Mihomo built-in DNS to prevent DNS leak.
      config.dns = config.dns || {};
-     config.dns.enable = true;
      // respect-rules needs to config proxy-server-nameserver
      if (!config.dns["proxy-server-nameserver"]) {
-       config.dns["proxy-server-nameserver"] = [
-         "https://doh.pub/dns-query"
-       ];
+       config.dns["proxy-server-nameserver"] = ["https://doh.pub/dns-query"];
      }
      config.dns["respect-rules"] = true;
 
