@@ -1,5 +1,11 @@
 # sing-box
 
+## Simple way
+
+```bash
+bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
+```
+
 ## Manually Setting Up sing-box on a VPS: VLESS + REALITY + AT&T IPv6
 
 Environment: Debian VPS, sing-box 1.14.3, XpertV6, and Clash Verge Rev on Windows.
