@@ -114,13 +114,13 @@
 | <https://dashboard.webshare.io/> | US     | Y            | N          | 指纹浏览器接入, claude开通pro提示"Failed to load the payment form"                                  |
 | <https://vpnuk.net>              | UK     | Y            |            | 家宽但ipinfo被标记, 英国UDP, 一个月9.9英镑                                                          |
 | <https://yunyoo.cc/>             | US     | N            | N          | 洛杉矶4837ISP-TCVM - Mini, XRDP网页Claude弹KYC                                                      |
-| <https://vmiss.com>              | US     | N            |            |                                                                                                     |
+| <https://vmiss.com>              | US     | N            | N          |                                                                                                     |
 | <https://equaldcdn.com/>         | US     |              |            |                                                                                                     |
 | <https://www.nodemach.com/>      | US     |              |            |                                                                                                     |
 | <https://my.zorocloud.com>       | US     |              |            |                                                                                                     |
 | <https://www.yin-net.com/>       | US     |              |            |                                                                                                     |
 | <https://ipmela.com/>            | US     |              |            |                                                                                                     |
 | <https://www.sufe.pro/>          | US     |              |            |                                                                                                     |
-| <https://usvps24.com/>           | US     |              |            |                                                                                                     |
+| <https://usvps24.com/>           | US     | Y            |            |                                                                                                     |
 | <https://www.666clouds.com/>     | US     |              |            |                                                                                                     |
 | <https://shlii.io/>              | US     |              |            |                                                                                                     |
