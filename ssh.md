@@ -25,6 +25,24 @@ sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
 sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 ```
 
+## ssh-copy-id
+
+1. In VPS's `/etc/ssh/sshd_config`, set this, then restart ssh service.
+
+   ```text
+   PubkeyAuthentication yes
+   ```
+
+   ```bash
+   sudo systemctl restart ssh
+   ```
+
+2. In local machine, set ssh-copy-id:
+
+   ```bash
+   ssh-copy-id -i ~/.ssh/<YOUR_PUBLIC_KEY>.pub -p <VPS_PORT> <VPS_USER>@<VPS_IP>
+   ```
+
 ## Add ssh host alias, and ssh-copy-id on windows
 
 ```powershell
