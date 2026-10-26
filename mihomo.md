@@ -19,8 +19,15 @@ curl -A "clash.meta" -o config.yaml "Your subscription link here"
 ```
 
 ```bash
+# Check all proxies
 curl -s http://127.0.0.1:39090/proxies | jq '.proxies | to_entries[] | select(.value.type == "Selector") | {group: .key, current: .value.now, nodes: .value.all}'
-curl -X PUT -H 'Content-Type: application/json' -d '{"name":"美国2"}' 'http://127.0.0.1:39090/proxies/BoostNet'
+# Check all proxies with secret
+curl -s -H 'Authorization: Bearer your_secret' http://127.0.0.1:39090/proxies | jq '.proxies | to_entries[] | select(.value.type == "Selector") | {group: .key, current: .value.now, nodes: .value.all}'
+
+# Switch to a proxy
+curl -X PUT -H 'Content-Type: application/json' -d '{"name":"美国2"}' 'http://127.0.0.1:39090/proxies/MyGroup'
+# Switch to a proxy with secret
+curl -X PUT -H 'Content-Type: application/json' -H 'Authorization: Bearer your_secret' -d '{"name":"美国2"}' 'http://127.0.0.1:39090/proxies/GLOBAL'
 ```
 
 ## Configuration
@@ -30,9 +37,11 @@ curl -X PUT -H 'Content-Type: application/json' -d '{"name":"美国2"}' 'http://
 1. In clash's config file:
 
    ```yaml
+   # For external-controller:
+   secret: "your_secret"
+   # For proxy:
    authentication:
      - "your_username:your_password"
-   secret: "your_password"
    ```
 
 2. In your `~/.bashrc`:
