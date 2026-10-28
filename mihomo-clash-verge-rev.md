@@ -1,4 +1,4 @@
-# clash-verge-rev
+# mihomo-clash-verge-rev
 
 ## Configuration
 
@@ -44,6 +44,11 @@ sudo systemctl status clash-verge-service
    // Define main function (script entry)
 
    function main(config, profileName) {
+     // Enable all proxies' udp functionality by default
+     for (const proxy of config.proxies || []) {
+       proxy.udp = true;
+     }
+
      const directRules = [
        // Example: Set target IP direct (replace to real IPv4).
        // - "IP-CIDR,1.2.3.4/32,DIRECT,no-resolve"
@@ -61,12 +66,25 @@ sudo systemctl status clash-verge-service
        // School public net
        // "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve",
 
-       // Other public net
+       // My public net
        // "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve",
+
+       // Other public net
+       "DOMAIN-SUFFIX,cn,DIRECT",
+       "DOMAIN-SUFFIX,netease.com,DIRECT",
+       "DOMAIN-SUFFIX,163.com,DIRECT",
+       "DOMAIN-SUFFIX,aliyun.com,DIRECT",
+       "DOMAIN-SUFFIX,deepseek.com,DIRECT",
+       "DOMAIN-SUFFIX,baidu.com,DIRECT",
+       "DOMAIN-SUFFIX,qq.com,DIRECT",
+       "DOMAIN-SUFFIX,tencent.com,DIRECT",
+       "DOMAIN-SUFFIX,jianguoyun.com,DIRECT",
+       "DOMAIN-SUFFIX,servicewechat.com,DIRECT",
+       "DOMAIN-SUFFIX,weixinbridge.com,DIRECT",
      ];
      config.rules = [...directRules, ...(config.rules || [])];
 
-     // Enable Mihomo built-in DNS to prevent DNS leak.
+     // Enable Mihomo built-in DNS
      config.dns = config.dns || {};
      // respect-rules needs to config proxy-server-nameserver
      if (!config.dns["proxy-server-nameserver"]) {
