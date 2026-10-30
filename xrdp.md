@@ -80,7 +80,7 @@ Environment: Debian 12, 1GB RAM, 10GB SSD, Windows.
    Run in Windows PowerShell:
 
    ```powershell
-   ssh -p <SSH_PORT> -N -L 127.0.0.1:33389:127.0.0.1:33389 <VPS_USER>@<VPS_IP>
+   ssh -p <SSH_PORT> <VPS_USER>@<VPS_IP> -N -L 127.0.0.1:33389:127.0.0.1:33389
    ```
 
    Keep the PowerShell window open.
