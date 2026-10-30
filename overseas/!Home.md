@@ -26,11 +26,13 @@
 | <https://erwanfind.net>                                |             | Y              | Y          | 13/月/50G，不好用，节点经常timeout，速度也慢，不能clash命令行使用    |
 | <https://www.dageyun.com> -> <https://aff02.dgy02.com> |             | Y              | Y          | 20/月/100G，速度还行，支持clash命令行使用                            |
 | <https://ppg.369.cyou>                                 |             | Y              | Y          |                                                                      |
+| <https://一分机场.com>                                 |             | Y              | Y          | 纯净度低，10000+ 人共用                                              |
 | <https://1100.gg>                                      |             | N              | Y          |                                                                      |
 | <https://一元机场.ink>                                 |             | N              | Y          |                                                                      |
-| <https://一分机场.com>                                 |             | Y              | Y          | 纯净度低，10000+ 人共用                                              |
 | <https://一毛机场.com>                                 |             | N              |            |                                                                      |
 | <https://赔钱机场.com>                                 |             | N              |            |                                                                      |
+| <https://良心云.com/>                                  |             | Y              |            | 便宜 2/月                                                            |
+| <https://ikuuu.org/>                                   |             | N              |            | 可作为前置节点                                                       |
 | <https://jike0.com>                                    |             |                |            |                                                                      |
 | <https://ly.ccwink.art>                                |             |                |            |                                                                      |
 | <https://yuntu.blog>                                   |             |                |            |                                                                      |
@@ -113,6 +115,7 @@
 | URL                              | Region | Residential? | Claude OK? | Note                                                                                                |
 | -------------------------------- | ------ | ------------ | ---------- | --------------------------------------------------------------------------------------------------- |
 | <http://h.7li7li.com/>           | US     | Y            | Y          |                                                                                                     |
+| <https://usvps24.com/>           | US     | Y            | Y          |                                                                                                     |
 | <https://aethercloud.io>         | US     | Y            | N          | 提供ATT ipv6 (需要自行脚本安装), sing-box, 指纹浏览器接入 (出站ipv6 only), claude提示无法验证浏览器 |
 | <https://dashboard.webshare.io/> | US     | Y            | N          | 指纹浏览器接入, claude开通pro提示"Failed to load the payment form"                                  |
 | <https://vpnuk.net>              | UK     | Y            |            | 家宽但ipinfo被标记, 英国UDP, 一个月9.9英镑                                                          |
@@ -124,6 +127,5 @@
 | <https://www.yin-net.com/>       | US     |              |            |                                                                                                     |
 | <https://ipmela.com/>            | US     |              |            |                                                                                                     |
 | <https://www.sufe.pro/>          | US     |              |            |                                                                                                     |
-| <https://usvps24.com/>           | US     | Y            |            |                                                                                                     |
 | <https://www.666clouds.com/>     | US     |              |            |                                                                                                     |
 | <https://shlii.io/>              | US     |              |            |                                                                                                     |
