@@ -26,11 +26,13 @@
 | <https://erwanfind.net>                                |             | Y              | Y          | 13/月/50G，不好用，节点经常timeout，速度也慢，不能clash命令行使用    |
 | <https://www.dageyun.com> -> <https://aff02.dgy02.com> |             | Y              | Y          | 20/月/100G，速度还行，支持clash命令行使用                            |
 | <https://ppg.369.cyou>                                 |             | Y              | Y          |                                                                      |
+| <https://一分机场.com>                                 |             | Y              | Y          | 纯净度低，10000+ 人共用                                              |
 | <https://1100.gg>                                      |             | N              | Y          |                                                                      |
 | <https://一元机场.ink>                                 |             | N              | Y          |                                                                      |
-| <https://一分机场.com>                                 |             | Y              | Y          | 纯净度低，10000+ 人共用                                              |
 | <https://一毛机场.com>                                 |             | N              |            |                                                                      |
 | <https://赔钱机场.com>                                 |             | N              |            |                                                                      |
+| <https://良心云.com/>                                  |             | Y              |            | 便宜 2/月                                                            |
+| <https://ikuuu.org/>                                   |             | N              |            | 可作为前置节点                                                       |
 | <https://jike0.com>                                    |             |                |            |                                                                      |
 | <https://ly.ccwink.art>                                |             |                |            |                                                                      |
 | <https://yuntu.blog>                                   |             |                |            |                                                                      |
