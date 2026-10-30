@@ -106,6 +106,9 @@
 | <https://ip.net.coffee/claude/>   |
 | <https://fuck-claude.app/>        |
 | <https://fuck-claude.vercel.app/> |
+| <https://tcp6.ping.pe/>           |
+| <https://ilatency.com/>           |
+| <https://api64.ipify.org/>        |
 
 | URL                              | Region | Residential? | Claude OK? | Note                                                                                                |
 | -------------------------------- | ------ | ------------ | ---------- | --------------------------------------------------------------------------------------------------- |
