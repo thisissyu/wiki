@@ -104,7 +104,7 @@
 1. In your current physical laptop, run:
 
    ```bash
-   ssh -N -L 127.0.0.1:2095:127.0.0.1:2095 -L 127.0.0.1:2096:127.0.0.1:2096 root@<VPS_IP>
+   ssh <VPS_PORT> root@<VPS_IP> -N -L 127.0.0.1:2095:127.0.0.1:2095 -L 127.0.0.1:2096:127.0.0.1:2096
    # NOTE: In your laptop browser, open: http://127.0.0.1:2095/app/
    ```
 
