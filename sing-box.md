@@ -33,41 +33,37 @@
 1. In VPS, run command below and get vless link in console output
 
    ```bash
-   bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh); sb log none
+   bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh); sb port reality 443; sb log none
    ```
 
-1. In local computer, deploy this below with docker compose,
+1. In local computer, deploy this below with docker compose, then visit `http://127.0.0.1:8087/url-encoder`, convert vless link to encoded version.
 
    > Ref: <https://github.com/corentinth/it-tools>
 
    ```yaml
    services:
-   it-tools:
-     image: corentinth/it-tools:latest
-     container_name: it-tools
-     restart: unless-stopped
-     ports:
-       - "8087:80"
+     it-tools:
+       image: corentinth/it-tools:latest
+       container_name: it-tools
+       restart: unless-stopped
+       ports:
+         - "8087:80"
    ```
 
-   then visit `http://127.0.0.1:8087/url-encoder`, convert vless link to encoded version.
-
-1. In local computer, deploy this below with docker compose,
+1. In local computer, deploy this below with docker compose, then visit `http://127.0.0.1:25500/sub?target=clash&url=<Paste your encoded vless link here>`
 
    > Ref: <https://github.com/asdlokj1qpi233/subconverter>
 
    ```yaml
    version: "3"
    services:
-   subconverter:
-     image: asdlokj1qpi23/subconverter:latest
-     container_name: subconverter
-     ports:
-       - "25500:25500"
-     restart: always
+     subconverter:
+       image: asdlokj1qpi23/subconverter:latest
+       container_name: subconverter
+       ports:
+         - "25500:25500"
+       restart: always
    ```
-
-   then visit `http://127.0.0.1:25500/sub?target=clash&url=<Paste your encoded vless link here>`
 
 ## Deploy s-ui in VPS
 
