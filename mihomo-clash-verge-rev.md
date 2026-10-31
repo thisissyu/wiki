@@ -44,6 +44,13 @@ sudo systemctl status clash-verge-service
    // Define main function (script entry)
 
    function main(config, profileName) {
+     config.dns = config.dns || {};
+     config.dns["respect-rules"] = true;
+     // respect-rules needs to config proxy-server-nameserver
+     if (!config.dns["proxy-server-nameserver"]) {
+       config.dns["proxy-server-nameserver"] = ["https://doh.pub/dns-query"];
+     }
+
      // Enable all proxies' udp functionality by default
      for (const proxy of config.proxies || []) {
        proxy.udp = true;
@@ -68,6 +75,10 @@ sudo systemctl status clash-verge-service
 
        // My public net
        // "IP-CIDR,a.b.c.d/32,DIRECT,no-resolve",
+
+       // Public China DNS server
+       "IP-CIDR,114.114.114.114/32,DIRECT,no-resolve",
+       "IP-CIDR,223.5.5.5/32,DIRECT,no-resolve",
 
        // Other public net
        "DOMAIN-SUFFIX,cn,DIRECT",
