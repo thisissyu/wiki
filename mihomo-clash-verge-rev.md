@@ -1,8 +1,8 @@
 # mihomo-clash-verge-rev
 
-## Configuration
+> Ref: <https://github.com/clash-verge-rev/clash-verge-rev>
 
-### Enable TUN service for Linux
+## Enable TUN service for Linux
 
 ```bash
 sudo clash-verge-service-install
@@ -11,7 +11,7 @@ sudo systemctl enable --now clash-verge-service
 sudo systemctl status clash-verge-service
 ```
 
-### Global extend config and script
+## Global extend config and script
 
 1. Default path
 
@@ -96,7 +96,7 @@ sudo systemctl status clash-verge-service
    }
    ```
 
-### Set chain proxy
+## Set chain proxy
 
 Create a new profile (proxies are copied from your other profiles)
 
@@ -120,7 +120,7 @@ rules:
   - "MATCH,MyGroup"
 ```
 
-### Kill Switch with nftables (Debian + Clash Verge Rev)
+## Kill Switch with nftables (Debian + Clash Verge Rev)
 
 Objective:
 
@@ -268,3 +268,7 @@ Objective:
    Core principle: Clash controls traffic routing, while nftables prevents regular outbound traffic from bypassing Clash.
 
    Note: This configuration protects conventional IP outbound and forwarded traffic. It does not guarantee absolute leak prevention for every protocol, isolated network namespace, or privileged operation.
+
+## DNS Configuration
+
+<p><img src=".assets/mihomo-clash-verge-rev/img/2026-11-01-01-54-32.png" alt="" width=100% style="display: block; margin: auto;"></p>
