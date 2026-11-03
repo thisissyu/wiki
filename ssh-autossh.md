@@ -1,5 +1,7 @@
 # autossh
 
+> Ref: [ssh.md](./ssh.md)
+
 1. Prepare two machines:
 
    Inner A
@@ -38,10 +40,14 @@
    The basic command template is:
 
    ```bash
+   #!/bin/bash
    # NOTE: "$AUTOSSH_PATH" is optional, to specify which ssh you want to use.
-   AUTOSSH_PATH=/path/to/ssh \
-   autossh -M [monitor_port] -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
-       -NfR [Public B listen address]:[Public B port]:[Inner A target address]:[Inner A port] -p 36000 pubuser@47.xxx.xxx.227
+   export AUTOSSH_PATH=/path/to/ssh
+   # My autossh wrapper
+   myautossh() {
+       autossh -fN -M 0 -o BatchMode=yes -o ConnectTimeout=10 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes "$@"
+   }
+   myautossh -p 36000 root@47.xxx.xxx.227 -R '[Public B listen address]:[Public B port]:[Inner A target address]:[Inner A port]'
    ```
 
    Where there are three choices to select the public B listen address, the difference is:
@@ -60,17 +66,17 @@
      # Choose one public listen address choice to fit you need.
 
      # Choice 1, set public listen address to 0.0.0.0
-     autossh -M 0 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -NfR 0.0.0.0:36001:127.0.0.1:22 -p 36000 pubuser@47.xxx.xxx.227
+     myautossh -p 36000 pubuser@47.xxx.xxx.227 -R 0.0.0.0:36001:127.0.0.1:22
      # Test login: There must be `innuser`, not `pubuser`.
      ssh -p 36001 innuser@47.xxx.xxx.227
 
      # Choice 2, set public listen address to 47.xxx.xxx.227
-     autossh -M 0 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -NfR 47.xxx.xxx.227:36001:127.0.0.1:22 -p 36000 pubuser@47.xxx.xxx.227
+     myautossh -p 36000 pubuser@47.xxx.xxx.227 -R 47.xxx.xxx.227:36001:127.0.0.1:22
      # Test login: There must be `innuser`, not `pubuser`.
      ssh -p 36001 innuser@47.xxx.xxx.227
 
      # Choice 3, set public listen address to 127.0.0.1
-     autossh -M 0 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -NfR 127.0.0.1:36001:127.0.0.1:22 -p 36000 pubuser@47.xxx.xxx.227
+     myautossh -p 36000 pubuser@47.xxx.xxx.227 -R 127.0.0.1:36001:127.0.0.1:22
      # Test login: Run on Public B. There must be `innuser`, not `pubuser`.
      ssh -p 36001 innuser@127.0.0.1
      ```
@@ -106,18 +112,4 @@
    ```bash
    pgrep -af autossh
    kill -TERM <autossh_PID>
-   ```
-
-1. Batch script `~/autos.sh`
-
-   ```bash
-   #!/bin/bash
-   SSH_OPTS=(
-     -o ExitOnForwardFailure=yes
-     -o ServerAliveInterval=15
-     -o ServerAliveCountMax=3
-   )
-
-   autossh -M 0 "${SSH_OPTS[@]}" -NfR 0.0.0.0:37000:127.0.0.1:7000 -p 36000 pubuser@47.xxx.xxx.227
-   autossh -M 0 "${SSH_OPTS[@]}" -NfR 0.0.0.0:38000:127.0.0.1:8000 -p 36000 pubuser@47.xxx.xxx.227
    ```
