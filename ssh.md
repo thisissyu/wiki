@@ -147,9 +147,9 @@ Keep the command running. When finished, press `Ctrl+C` to close the temporary t
 
 When SSH runs on A and logs in to D through B and C, the listener is the entry point you connect to; SSH forwards that connection to the target service.
 
-| Forwarding option                   | Listener (forwarding entry point you connect to) | Target service      |
-| ----------------------------------- | ------------------------------------------------ | ------------------- |
-| `-L 127.0.0.1:38137:127.0.0.1:8317` | A: `127.0.0.1:38137`                             | D: `127.0.0.1:8317` |
-| `-R 127.0.0.1:38137:127.0.0.1:8317` | D: `127.0.0.1:38137`                             | A: `127.0.0.1:8317` |
+| Forwarding option                   | Listener (forwarding entry point you connect to) | Target service (connected from) | Type                                    |
+| ----------------------------------- | ------------------------------------------------ | ------------------------------- | --------------------------------------- |
+| `-L 127.0.0.1:38137:127.0.0.1:8317` | A: `127.0.0.1:38137` (Local)                     | D: `127.0.0.1:8317` (Remote)    | Forward Tunnel (Local Port Forwarding)  |
+| `-R 127.0.0.1:38137:127.0.0.1:8317` | D: `127.0.0.1:38137` (Remote)                    | A: `127.0.0.1:8317` (Local)     | Reverse Tunnel (Remote Port Forwarding) |
 
 Use `-L` here: connect to `127.0.0.1:38137` on A to access the service on D's port `8317`.
