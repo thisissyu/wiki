@@ -15,6 +15,7 @@ vim docker-compose.yml
 services:
   wallos:
     image: bellamy/wallos:latest
+    restart: always
     ports:
       - "8282:80"
     volumes:
