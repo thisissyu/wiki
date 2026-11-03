@@ -283,3 +283,15 @@ Objective:
 ## DNS Configuration
 
 <p><img src=".assets/mihomo-clash-verge-rev/img/2026-11-01-01-54-32.png" alt="" width=100% style="display: block; margin: auto;"></p>
+
+## Fix WSL2 IPv6 SSH Timeout
+
+After switching Clash Verge Rev nodes or TUN, WSL2 may fail to connect to IPv6 SSH addresses.
+
+Run this command in WSL2:
+
+```bash
+sudo ip -6 neigh del fdfe:dcba:9876::2 dev eth2 2>/dev/null || true; ping -6 -I eth2 -c 1 -W 2 fdfe:dcba:9876::2
+```
+
+This clears the old network cache and reconnects to the TUN gateway. It does not restart WSL2 or Clash. After running it, try SSH again.
