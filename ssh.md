@@ -43,6 +43,12 @@ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
    ssh-copy-id -i ~/.ssh/<YOUR_PUBLIC_KEY>.pub -p <VPS_PORT> <VPS_USER>@<VPS_IP>
    ```
 
+3. If you need to set jumphost:
+
+   ```bash
+   ssh-copy-id -o 'ProxyJump=<JUMP_USER>@<JUMP_HOST>:<JUMP_PORT>' -p <VPS_PORT> <VPS_USER>@<VPS_IP>
+   ```
+
 ## Add ssh host alias, and ssh-copy-id on windows
 
 ```powershell
