@@ -33,7 +33,10 @@
 1. In VPS, run command below and get vless link in console output
 
    ```bash
-   bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh); sb port reality 443; sb log none
+   bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
+   sb log none
+   sb port reality 443
+   sb sni reality www.bing.com
    ```
 
 1. In local computer, deploy this below with docker compose, then visit `http://127.0.0.1:8087/url-encoder`, convert vless link to encoded version.
@@ -63,6 +66,19 @@
        ports:
          - "25500:25500"
        restart: always
+   ```
+
+1. Manually change port (usually for TCP and UDP both in 443)
+
+   ```bash
+   vi /etc/sing-box/conf/VLESS-REALITY-1915.json
+   # Change "listen_port": 1915 to "listen_port": 443.
+   ```
+
+   ```bash
+   # Check and restart
+   sb bin check -c /etc/sing-box/config.json -C /etc/sing-box/conf
+   sb restart
    ```
 
 ## Deploy s-ui in VPS
