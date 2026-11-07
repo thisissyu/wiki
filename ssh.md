@@ -159,3 +159,14 @@ When SSH runs on A and logs in to D through B and C, the listener is the entry p
 | `-R 127.0.0.1:38137:127.0.0.1:8317` | D: `127.0.0.1:38137` (Remote)                    | A: `127.0.0.1:8317` (Local)     | Reverse Tunnel (Remote Port Forwarding) |
 
 Use `-L` here: connect to `127.0.0.1:38137` on A to access the service on D's port `8317`.
+
+## scp
+
+```bash
+# Usage: scp [cp from] [cp to]
+# For example,
+# cp from remote, to local: scp <REMOTE_USER>@<REMOTE_IP>:<REMOTE_FILENAME> <LOCAL_FILENAME>
+scp <REMOTE_USER>@<REMOTE_IP>:/home/<REMOTE_USER>/Documents/claude-workspace/cado/paper/v2/tex/main.pdf ~/Downloads/main.pdf
+# cp from local, to remote: scp <LOCAL_FILENAME> <REMOTE_USER>@<REMOTE_IP>:<REMOTE_FILENAME>
+scp ~/Downloads/main.pdf <REMOTE_USER>@<REMOTE_IP>:/home/yusl/Documents/claude-workspace/cado/paper/v2/tex/main.pdf
+```
