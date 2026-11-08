@@ -35,7 +35,8 @@
    ```bash
    bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
    sb log none
-   sb port reality 443
+   sb del hy
+   sb add reality 443
    sb sni reality www.bing.com
    ```
 
@@ -79,6 +80,15 @@
    # Check and restart
    sb bin check -c /etc/sing-box/config.json -C /etc/sing-box/conf
    sb restart
+   ```
+
+1. Speet test and optimize
+
+   ```bash
+   # Speed test
+   bash <(curl -sL https://run.NodeQuality.com)
+   # Optimize TCP
+   bash <(curl -fsSL https://raw.githubusercontent.com/Kylin010/tcpfit/main/tcpfit.sh)
    ```
 
 ## Deploy s-ui in VPS
